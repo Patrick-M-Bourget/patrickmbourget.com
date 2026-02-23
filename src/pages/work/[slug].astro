@@ -6,7 +6,7 @@ import { work } from '../../data/work';
 
 export function getStaticPaths() {
   const itemsWithSlug = work.filter(
-    (item) => item.slug && (item.category === 'product' || item.category === 'design')
+    (item) => item.slug && item.category === 'product'
   );
   return itemsWithSlug.map((item) => ({
     params: { slug: item.slug as string },

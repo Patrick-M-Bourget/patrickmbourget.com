@@ -9,18 +9,11 @@ interface Props {
 
 const { projects } = Astro.props;
 
-const categories: { key: WorkCategory; label: string }[] = [
-  { key: 'product', label: 'Product leadership' },
-  { key: 'design', label: 'Design' },
-  { key: 'audio', label: 'Audio engineering' },
-];
-
 function byCategory(items: WorkItem[], category: WorkCategory): WorkItem[] {
   return items.filter((i) => i.category === category);
 }
 
 const productItems = byCategory(projects, 'product');
-const designItems = byCategory(projects, 'design');
 const audioItems = byCategory(projects, 'audio');
 
 const SPOTIFY_EMBED_BASE = 'https://open.spotify.com/embed/album';
@@ -36,24 +29,6 @@ const SPOTIFY_EMBED_BASE = 'https://open.spotify.com/embed/album';
           <h3 class="subsection-title">Product leadership</h3>
           <div class="work-cards-grid">
             {productItems.map((item) => (
-              <ProjectCard
-                title={item.title}
-                description={item.description}
-                image={item.image}
-                slug={item.slug}
-                href={item.href}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      <!-- Design: card grid -->
-      {designItems.length > 0 && (
-        <div class="work-subsection">
-          <h3 class="subsection-title">Design</h3>
-          <div class="work-cards-grid">
-            {designItems.map((item) => (
               <ProjectCard
                 title={item.title}
                 description={item.description}

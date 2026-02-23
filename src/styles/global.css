@@ -26,7 +26,7 @@
   --text-3xl: 1.875rem;
   --text-4xl: 2.25rem;
   --max-width-prose: 65ch;
-  --max-width-content: 960px;
+  --max-width-content: 800px;
   /* Liquid Glass */
   --gradient-bg: radial-gradient(ellipse 120% 80% at 50% 0%, rgba(220, 230, 255, 0.4) 0%, rgba(248, 250, 255, 0.9) 45%, #fafafa 100%);
   --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0.08) 100%);
@@ -254,12 +254,6 @@ body {
   }
 }
 
-@media (min-width: 1024px) {
-  .work-cards-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 .project-card {
   display: flex;
   flex-direction: column;
@@ -343,12 +337,6 @@ body {
 @media (min-width: 768px) {
   .albums-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  .albums-grid {
-    grid-template-columns: repeat(3, 1fr);
   }
 }
 

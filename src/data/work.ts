@@ -1,4 +1,4 @@
-export type WorkCategory = 'product' | 'design' | 'audio';
+export type WorkCategory = 'product' | 'audio';
 
 export interface WorkItem {
   title: string;
@@ -87,6 +87,39 @@ export const work: WorkItem[] = [
       'I led the product design, build, and launch of a Pro Services Marketplace for musicians — connecting artists with mastering and mixing professionals. I defined and owned the product roadmap for both the vendor and consumer experience, coordinated sourcing and quality assurance of vendor supply, conducted user research and interviews to inform the roadmap, and used data-driven insights to identify testing and monetization opportunities.',
   },
   {
+    title: 'RePitch 2 — Synchro Arts',
+    description:
+      'Pitch correction and editing plugin with visual pitch grid, scale snap, formant shift, and macro-based workflow for vocals and instruments.',
+    category: 'product',
+    href: 'https://www.synchroarts.com',
+    image: '/work/repitch-2.png',
+    slug: 'repitch-2',
+    longDescription:
+      'RePitch 2 (Synchro Arts) is a pitch correction and editing plugin featuring a visual pitch grid for editing note segments over time. It offers scale snap (e.g. chromatic), formant shift, note-level controls for drift and level, capture and macro workflows, and tools for drawing, quantizing, and editing pitch. Used for vocals and monophonic material in the DAW.',
+  },
+  {
+    title: 'VocAlign 6 — Synchro Arts',
+    description:
+      'Vocal alignment and pitch correction with GUIDE/DUB/OUTPUT workflow, match timing and pitch controls, and SmartPitch for tuned vocals.',
+    category: 'product',
+    href: 'https://www.synchroarts.com',
+    image: '/work/vocalign-6.png',
+    slug: 'vocalign-6',
+    longDescription:
+      'VocAlign 6 (Synchro Arts) is an advanced vocal alignment and pitch correction tool. It uses a GUIDE/DUB/OUTPUT workflow to align doubles and harmonies to a guide track, with controls for match timing (max difference loose/tight), match pitch, alignment rules, target mode, and SmartPitch. Features include Enhanced Pitch, Shaper Tool, and high-resolution processing for precise, professionally-tuned vocals.',
+  },
+  {
+    title: 'Reason Rack — Reason Studios',
+    description:
+      'The legendary Reason Rack as a plugin — full instrument and effect rack that works in any major DAW.',
+    category: 'product',
+    href: 'https://www.reasonstudios.com',
+    image: '/work/reason-rack.png',
+    slug: 'reason-rack',
+    longDescription:
+      'Reason Rack (Reason Studios) brings the classic Reason instrument and effect rack into any major DAW as a plugin. It includes synths like Objekt, drum machines like Redrum, and the full Reason sound design workflow. Compatible with Ableton Live, Studio One, Logic Pro, Pro Tools, Cubase, FL Studio, and more.',
+  },
+  {
     title: 'Chit-Chat Distro',
     description:
       'Founded a boutique agency distributing new music to campus and public radio; 60+ records, 500+ Earshot/CBC chart spots, #1 over 80+ times.',
@@ -95,33 +128,6 @@ export const work: WorkItem[] = [
     slug: 'chit-chat-distro',
     longDescription:
       'I founded Chit-Chat Distro, a boutique agency that distributes new music to the campus and public radio circuit. I designed a low-cost solution for an industry in transition from CD to streaming, with reporting and insights to inform musicians’ tour schedules. The company has distributed 60+ records, captured 500+ Earshot and CBC radio chart spots, and charted #1 over 80+ times with 40+ weeks on the National charts.',
-  },
-  // Design
-  {
-    title: 'Product design & UX at LANDR',
-    description:
-      'User research, journey mapping, and product design for mastering and creative tools; collaboration with design and eng to ship clear, usable experiences.',
-    category: 'design',
-    image: '/work/landr-ux.jpg',
-    slug: 'product-design-ux-landr',
-    longDescription:
-      'I drive user research, journey mapping, and product design for LANDR’s mastering and creative tools. I work closely with design and engineering to ship clear, usable experiences that musicians and pros rely on every day.',
-  },
-  {
-    title: 'UX/UI & design thinking',
-    description:
-      'Trained in app design, UX, UI, and design thinking; applied in product discovery, feature design, and cross-functional alignment.',
-    category: 'design',
-    image: '/work/ux-ui.jpg',
-    slug: 'ux-ui-design-thinking',
-  },
-  {
-    title: 'Section4 Brand Strategist',
-    description:
-      'Certified Brand Strategist (Section4); use strategy and positioning to shape product and marketing narratives.',
-    category: 'design',
-    image: '/work/section4.jpg',
-    slug: 'section4-brand-strategist',
   },
   // Audio engineering
   {
