@@ -1,5 +1,7 @@
 ---
 import type { WorkItem, WorkCategory } from '../data/work';
+import { featuredAlbums } from '../data/work';
+import ProjectCard from './ProjectCard.astro';
 
 interface Props {
   projects: WorkItem[];
@@ -16,34 +18,99 @@ const categories: { key: WorkCategory; label: string }[] = [
 function byCategory(items: WorkItem[], category: WorkCategory): WorkItem[] {
   return items.filter((i) => i.category === category);
 }
+
+const productItems = byCategory(projects, 'product');
+const designItems = byCategory(projects, 'design');
+const audioItems = byCategory(projects, 'audio');
+
+const SPOTIFY_EMBED_BASE = 'https://open.spotify.com/embed/album';
 ---
 <section id="work" class="section" aria-labelledby="work-heading">
   <div class="container">
-    <h2 id="work-heading" class="section-title">Work</h2>
-    <div class="work-grid">
-      {categories.map(({ key, label }) => {
-        const items = byCategory(projects, key);
-        if (items.length === 0) return null;
-        return (
-          <div class="work-subsection">
-            <h3 class="subsection-title">{label}</h3>
-            <ul class="work-list">
-              {items.map((item) => (
-                <li>
-                  <p class="work-item-title">
-                    {item.href ? (
-                      <a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a>
-                    ) : (
-                      item.title
-                    )}
-                  </p>
-                  <p class="work-item-desc">{item.description}</p>
-                </li>
-              ))}
-            </ul>
+    <div class="glass glass-pad">
+      <h2 id="work-heading" class="section-title">Work</h2>
+      <div class="work-grid">
+      <!-- Product leadership: card grid -->
+      {productItems.length > 0 && (
+        <div class="work-subsection">
+          <h3 class="subsection-title">Product leadership</h3>
+          <div class="work-cards-grid">
+            {productItems.map((item) => (
+              <ProjectCard
+                title={item.title}
+                description={item.description}
+                image={item.image}
+                slug={item.slug}
+                href={item.href}
+              />
+            ))}
           </div>
-        );
-      })}
+        </div>
+      )}
+
+      <!-- Design: card grid -->
+      {designItems.length > 0 && (
+        <div class="work-subsection">
+          <h3 class="subsection-title">Design</h3>
+          <div class="work-cards-grid">
+            {designItems.map((item) => (
+              <ProjectCard
+                title={item.title}
+                description={item.description}
+                image={item.image}
+                slug={item.slug}
+                href={item.href}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Audio engineering: role list + Albums -->
+      {audioItems.length > 0 && (
+        <div class="work-subsection">
+          <h3 class="subsection-title">Audio engineering</h3>
+          <ul class="work-list">
+            {audioItems.map((item) => (
+              <li>
+                <p class="work-item-title">
+                  {item.href ? (
+                    <a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                  ) : (
+                    item.title
+                  )}
+                </p>
+                <p class="work-item-desc">{item.description}</p>
+              </li>
+            ))}
+          </ul>
+
+          {featuredAlbums.length > 0 && (
+            <>
+              <h3 class="subsection-title mt-8">Selected credits</h3>
+              <div class="albums-grid">
+                {featuredAlbums.map((album) => (
+                  <div class="glass glass-pad">
+                    <div class="album-embed-wrap">
+                      <iframe
+                        title={album.artist ? `Spotify album: ${album.artist}` : 'Spotify album'}
+                        src={`${SPOTIFY_EMBED_BASE}/${album.spotifyAlbumId}?utm_source=generator`}
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"
+                      />
+                    </div>
+                    <p class="album-embed-caption">
+                      {album.credit}
+                      {album.artist ? ` · ${album.artist}` : ''}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+      </div>
     </div>
   </div>
 </section>

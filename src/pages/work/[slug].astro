@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../components/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import { work } from '../../data/work';
+
+export function getStaticPaths() {
+  const itemsWithSlug = work.filter(
+    (item) => item.slug && (item.category === 'product' || item.category === 'design')
+  );
+  return itemsWithSlug.map((item) => ({
+    params: { slug: item.slug as string },
+    props: { project: item },
+  }));
+}
+
+const { project } = Astro.props;
+const bodyText = project.longDescription ?? project.description;
+const pageTitle = `${project.title} | Patrick M. Bourget`;
+const canonical = `https://patrickmbourget.com/work/${project.slug}`;
+---
+<BaseLayout title={pageTitle} description={project.description} canonical={canonical}>
+  <Header />
+  <main class="section">
+    <div class="container">
+      <div class="glass glass-pad">
+        <p class="project-detail-back">
+          <a href="/#work">Back to Work</a>
+        </p>
+        {project.image ? (
+          <div class="project-detail-hero">
+            <img src={project.image} alt="" width="720" height="400" />
+          </div>
+        ) : null}
+        <h1 class="section-title">{project.title}</h1>
+        <p class="hero-bio">{bodyText}</p>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>
