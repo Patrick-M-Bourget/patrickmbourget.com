@@ -1,0 +1,49 @@
+---
+import type { WorkItem, WorkCategory } from '../data/work';
+
+interface Props {
+  projects: WorkItem[];
+}
+
+const { projects } = Astro.props;
+
+const categories: { key: WorkCategory; label: string }[] = [
+  { key: 'product', label: 'Product leadership' },
+  { key: 'design', label: 'Design' },
+  { key: 'audio', label: 'Audio engineering' },
+];
+
+function byCategory(items: WorkItem[], category: WorkCategory): WorkItem[] {
+  return items.filter((i) => i.category === category);
+}
+---
+<section id="work" class="section" aria-labelledby="work-heading">
+  <div class="container">
+    <h2 id="work-heading" class="section-title">Work</h2>
+    <div class="work-grid">
+      {categories.map(({ key, label }) => {
+        const items = byCategory(projects, key);
+        if (items.length === 0) return null;
+        return (
+          <div class="work-subsection">
+            <h3 class="subsection-title">{label}</h3>
+            <ul class="work-list">
+              {items.map((item) => (
+                <li>
+                  <p class="work-item-title">
+                    {item.href ? (
+                      <a href={item.href} target="_blank" rel="noopener noreferrer">{item.title}</a>
+                    ) : (
+                      item.title
+                    )}
+                  </p>
+                  <p class="work-item-desc">{item.description}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
