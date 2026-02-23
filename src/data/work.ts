@@ -119,16 +119,6 @@ export const work: WorkItem[] = [
     longDescription:
       'Reason Rack (Reason Studios) brings the classic Reason instrument and effect rack into any major DAW as a plugin. It includes synths like Objekt, drum machines like Redrum, and the full Reason sound design workflow. Compatible with Ableton Live, Studio One, Logic Pro, Pro Tools, Cubase, FL Studio, and more.',
   },
-  {
-    title: 'Chit-Chat Distro',
-    description:
-      'Founded a boutique agency distributing new music to campus and public radio; 60+ records, 500+ Earshot/CBC chart spots, #1 over 80+ times.',
-    category: 'product',
-    image: '/work/chit-chat.jpg',
-    slug: 'chit-chat-distro',
-    longDescription:
-      'I founded Chit-Chat Distro, a boutique agency that distributes new music to the campus and public radio circuit. I designed a low-cost solution for an industry in transition from CD to streaming, with reporting and insights to inform musicians’ tour schedules. The company has distributed 60+ records, captured 500+ Earshot and CBC radio chart spots, and charted #1 over 80+ times with 40+ weeks on the National charts.',
-  },
   // Audio engineering
   {
     title: 'Recording engineer — Indica Records',
