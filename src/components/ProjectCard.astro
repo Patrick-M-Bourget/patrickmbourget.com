@@ -1,0 +1,47 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  slug?: string;
+  href?: string;
+}
+
+const { title, description, image, slug, href } = Astro.props;
+---
+{slug ? (
+  <a href={`/work/${slug}`} class="project-card" aria-label={`View project: ${title}`}>
+    {image ? (
+      <div class="project-card-image-wrap">
+        <img src={image} alt="" width="400" height="250" loading="lazy" />
+      </div>
+    ) : (
+      <div class="project-card-image-wrap" aria-hidden="true" />
+    )}
+    <div class="project-card-body">
+      <h3 class="project-card-title">{title}</h3>
+      <p class="project-card-desc">{description}</p>
+      <span class="project-card-link">View project</span>
+    </div>
+  </a>
+) : (
+  <div class="project-card" role="article">
+    {image ? (
+      <div class="project-card-image-wrap">
+        <img src={image} alt="" width="400" height="250" loading="lazy" />
+      </div>
+    ) : (
+      <div class="project-card-image-wrap" aria-hidden="true" />
+    )}
+    <div class="project-card-body">
+      <h3 class="project-card-title">
+        {href ? (
+          <a href={href} target="_blank" rel="noopener noreferrer">{title}</a>
+        ) : (
+          title
+        )}
+      </h3>
+      <p class="project-card-desc">{description}</p>
+    </div>
+  </div>
+)}

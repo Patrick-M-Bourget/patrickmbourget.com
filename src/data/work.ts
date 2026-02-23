@@ -5,6 +5,18 @@ export interface WorkItem {
   description: string;
   category: WorkCategory;
   href?: string;
+  /** Product/Design: path under public/ (e.g. /work/landr.jpg) or URL */
+  image?: string;
+  /** Product/Design: slug for detail page at /work/[slug] */
+  slug?: string;
+  /** Product/Design: full description for detail page; falls back to description if missing */
+  longDescription?: string;
+}
+
+export interface FeaturedAlbum {
+  spotifyAlbumId: string;
+  credit: string;
+  artist?: string;
 }
 
 export const work: WorkItem[] = [
@@ -15,18 +27,74 @@ export const work: WorkItem[] = [
       'Leading product for the market leader in cloud mastering; roadmaps for core platform and mobile, collaboration tools, and data-informed growth.',
     category: 'product',
     href: 'https://www.landr.com',
+    image: '/work/landr.png',
+    slug: 'landr',
+    longDescription:
+      'I lead product at LANDR Audio, the market leader in AI-powered cloud mastering for musicians and audio professionals. My work spans roadmaps for the core platform and mobile app, collaboration tools for artists and teams, and data-informed growth. I collaborate on platform-wide product initiatives, support and mentor product managers, and apply agile best practices.',
+  },
+  {
+    title: 'LANDR Stems',
+    description:
+      'Stem separation for creative flexibility — isolate vocals, drums, bass, and other elements from any track for remixing and production.',
+    category: 'product',
+    href: 'https://www.landr.com',
+    image: '/work/landr-stems.png',
+    slug: 'landr-stems',
+    longDescription:
+      'LANDR Stems gives musicians and producers the ability to separate any song into individual stems — vocals, drums, bass, and others — for remixing, sampling, and creative production. I contributed to product direction and roadmap for this AI-powered stem separation tool, helping artists gain new creative flexibility from their existing audio.',
+  },
+  {
+    title: 'LANDR Sampler',
+    description:
+      'Sample-based instrument for loading, editing, and playing audio — with waveform view, ADSR, key/velocity, and a built-in keyboard.',
+    category: 'product',
+    href: 'https://www.landr.com',
+    image: '/work/landr-sampler.png',
+    slug: 'landr-sampler',
+    longDescription:
+      'LANDR Sampler is an audio sampling instrument for loading and playing samples in the DAW. It offers slot-based sample loading with advanced filters, waveform view and editing (WAVE, FX, SEQ tabs), ADSR and playback parameters (attack, decay, sustain, release, transpose, velocity, stretch, direction), and a virtual piano keyboard for playing samples across the key range. Powered by Monkey.',
+  },
+  {
+    title: 'LANDR Composer',
+    description:
+      'Music composition tool with scene-based arrangement, chord progressions, and tracks for chords, bass, and melody — with DAW sync and AI-assisted generation.',
+    category: 'product',
+    href: 'https://www.landr.com',
+    image: '/work/landr-composer.png',
+    slug: 'landr-composer',
+    longDescription:
+      'LANDR Composer is a composition application for creating and arranging musical ideas. It offers scene-based workflow, chord progression and key/scale controls, and track-based layout for chords, bass, and melody. Features include DAW sync, transport controls, and AI-assisted chord progression generation to help musicians sketch and develop ideas quickly.',
+  },
+  {
+    title: 'LANDR Synth X',
+    description:
+      'Subtractive synthesizer plugin with dual oscillators, filters, modulators, modulation matrix, and effects — for sound design in the DAW.',
+    category: 'product',
+    href: 'https://www.landr.com',
+    image: '/work/landr-synth-x.png',
+    slug: 'landr-synth-x',
+    longDescription:
+      'LANDR Synth X is a synthesizer plugin for digital audio workstations, offering subtractive synthesis with dual oscillators (including vowel and analog-style waves), dual filters, ADSR envelopes, LFOs, and a modulation matrix. Built-in effects include delay, reverb, chorus, and drive, with preset management and randomization for fast sound design and inspiration.',
   },
   {
     title: 'Pro Services Marketplace',
     description:
       'Designed and launched a marketplace connecting musicians with mastering and mixing pros; owned vendor and consumer experience and supply quality.',
     category: 'product',
+    image: '/work/pro-services.png',
+    slug: 'pro-services-marketplace',
+    longDescription:
+      'I led the product design, build, and launch of a Pro Services Marketplace for musicians — connecting artists with mastering and mixing professionals. I defined and owned the product roadmap for both the vendor and consumer experience, coordinated sourcing and quality assurance of vendor supply, conducted user research and interviews to inform the roadmap, and used data-driven insights to identify testing and monetization opportunities.',
   },
   {
     title: 'Chit-Chat Distro',
     description:
       'Founded a boutique agency distributing new music to campus and public radio; 60+ records, 500+ Earshot/CBC chart spots, #1 over 80+ times.',
     category: 'product',
+    image: '/work/chit-chat.jpg',
+    slug: 'chit-chat-distro',
+    longDescription:
+      'I founded Chit-Chat Distro, a boutique agency that distributes new music to the campus and public radio circuit. I designed a low-cost solution for an industry in transition from CD to streaming, with reporting and insights to inform musicians’ tour schedules. The company has distributed 60+ records, captured 500+ Earshot and CBC radio chart spots, and charted #1 over 80+ times with 40+ weeks on the National charts.',
   },
   // Design
   {
@@ -34,18 +102,26 @@ export const work: WorkItem[] = [
     description:
       'User research, journey mapping, and product design for mastering and creative tools; collaboration with design and eng to ship clear, usable experiences.',
     category: 'design',
+    image: '/work/landr-ux.jpg',
+    slug: 'product-design-ux-landr',
+    longDescription:
+      'I drive user research, journey mapping, and product design for LANDR’s mastering and creative tools. I work closely with design and engineering to ship clear, usable experiences that musicians and pros rely on every day.',
   },
   {
     title: 'UX/UI & design thinking',
     description:
       'Trained in app design, UX, UI, and design thinking; applied in product discovery, feature design, and cross-functional alignment.',
     category: 'design',
+    image: '/work/ux-ui.jpg',
+    slug: 'ux-ui-design-thinking',
   },
   {
     title: 'Section4 Brand Strategist',
     description:
       'Certified Brand Strategist (Section4); use strategy and positioning to shape product and marketing narratives.',
     category: 'design',
+    image: '/work/section4.jpg',
+    slug: 'section4-brand-strategist',
   },
   // Audio engineering
   {
@@ -65,5 +141,19 @@ export const work: WorkItem[] = [
     description:
       'Recording artist as Haviitz, Patrick Steele; performer and collaborator in the Montreal scene.',
     category: 'audio',
+  },
+];
+
+/** Albums to show as Spotify embeds in the Audio section. Album ID from Spotify URL: open.spotify.com/album/XYZ */
+export const featuredAlbums: FeaturedAlbum[] = [
+  {
+    spotifyAlbumId: '07lbso0DsJ9rlmLuaTNF5o',
+    credit: 'Engineer',
+    artist: 'Bonewaves — Eternal Surfer',
+  },
+  {
+    spotifyAlbumId: '6KQrz3jkKdeJLxJoyNjKLs',
+    credit: 'Producer, mixer, engineer',
+    artist: 'Haviitz — Nickels & Dimes',
   },
 ];
